@@ -36,7 +36,7 @@ function App() {
   const [searchResults, setSearchResults] = useState(fictionalSearch)
   const [playlistName, setPlaylistName] = useState('New Playlist')
   const [playlistTracks, setPlaylistTracks] = useState([])
-  const [accessToken, setAccessToken] = useState('')
+  const [accessToken, setAccessToken] = useState('') // Saves accessToken 
     
     // Get API Access Token and set it to the state "accessToken".
     useEffect(() => {
