@@ -35,7 +35,7 @@ function App() {
   // States
   const [searchResults, setSearchResults] = useState(fictionalSearch)
   const [playlistName, setPlaylistName] = useState('New Playlist')
-  const [playlistTracks, setPlaylistTracks] = useState([])
+  const [playlistTracks, setPlaylistTracks] = useState([]) // Playlist ready to be synced
   const [accessToken, setAccessToken] = useState('') // Saves accessToken 
     
     // Get API Access Token and set it to the state "accessToken".
