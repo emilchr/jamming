@@ -2,6 +2,7 @@ body,
 html,
 #root {
   height: 100%;
+  
 }
 
 html {
@@ -11,14 +12,15 @@ html {
 h1 {
   padding: .77rem 0;
   background-color: #010c3f;
+  margin: 0;
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  font-size: 1.88rem;
+  font-size: 2.88rem;
   color: #fff;
 }
 
 h1 .highlight {
-  color: #6c41ec;
+  color: #fe177b;
 }
 
 h2 {
