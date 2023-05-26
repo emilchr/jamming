@@ -12,32 +12,6 @@ import Spotify from '../../util/Spotify';
 
 function App() {
   
-  const fictionalSearch = [
-    {
-    name: 'Walk All Over You',
-    artists: [{name:'AC/DC'}],
-    album: {
-      name: 'Highway to Hell'
-    },
-    id: 1,
-    uri: '5xquYn2sr3uEcyuKU9BmCJ'},
-    {name: 'Thunderstruck',
-    artists: [{name:'AC/DC'}],
-    album: {
-      name: 'Razors Edge'
-    },
-    id: 2,
-    uri: '57bgtoPSgt236HzfBOd8kj'},
-    {name: 'Stabbing the Drama',
-    artists: [{name:'Soilwork'}],
-    album: {
-      name: 'Stabbing the Drama'
-    },
-    id: 3,
-    uri: '4XFykLS5W3LCvEQ5QfU01P'
-  } 
-];
-
   // States
   const [searchResults, setSearchResults] = useState([])
   const [playlistName, setPlaylistName] = useState('New Playlist')
