@@ -15,25 +15,31 @@ function App() {
   const fictionalSearch = [
     {
     name: 'Walk All Over You',
-    artist: 'AC/DC',
-    album: 'Highway to Hell',
+    artists: [{name:'AC/DC'}],
+    album: {
+      name: 'Highway to Hell'
+    },
     id: 1,
     uri: '5xquYn2sr3uEcyuKU9BmCJ'},
     {name: 'Thunderstruck',
-    artist: 'AC/DC',
-    album: 'Razors Edge',
+    artists: [{name:'AC/DC'}],
+    album: {
+      name: 'Razors Edge'
+    },
     id: 2,
     uri: '57bgtoPSgt236HzfBOd8kj'},
     {name: 'Stabbing the Drama',
-    artist: 'Soilwork',
-    album: 'Stabbing the Drama',
+    artists: [{name:'Soilwork'}],
+    album: {
+      name: 'Stabbing the Drama'
+    },
     id: 3,
     uri: '4XFykLS5W3LCvEQ5QfU01P'
   } 
 ];
 
   // States
-  const [searchResults, setSearchResults] = useState(fictionalSearch)
+  const [searchResults, setSearchResults] = useState([])
   const [playlistName, setPlaylistName] = useState('New Playlist')
   const [playlistTracks, setPlaylistTracks] = useState([]) // Playlist ready to be synced
   const [accessToken, setAccessToken] = useState('') // Saves accessToken 
@@ -99,7 +105,7 @@ function App() {
     const searchEndpoint = 'https://api.spotify.com/v1/search';
     const searchQuery = '?q='+term;
     const searchType = '&type=track';
-
+    
     const authParams = {
       method: 'GET',
       headers: {
@@ -109,8 +115,8 @@ function App() {
 
     fetch(searchEndpoint + searchQuery + searchType, authParams)
     .then(result => result.json())
-    .then(data => console.log(data.tracks.items))
-
+    .then(data => setSearchResults(data.tracks.items))
+    //console.log(searchResults)
   }
 
   return (
