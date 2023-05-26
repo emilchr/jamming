@@ -14,7 +14,7 @@ function App() {
   
   // States
   const [searchResults, setSearchResults] = useState([])
-  const [playlistName, setPlaylistName] = useState('New Playlist')
+  const [playlistName, setPlaylistName] = useState('Enter Playlist Name')
   const [playlistTracks, setPlaylistTracks] = useState([]) // Playlist ready to be synced
   const [accessToken, setAccessToken] = useState('') // Saves accessToken 
     
@@ -68,7 +68,7 @@ function App() {
         console.log('Playlist name: ' + newPlaylistName);
 
         setPlaylistTracks([]);
-        updatePlaylistName('New Playlist') // changes value of playlistName.
+        updatePlaylistName('Enter Playlist Name') // resets the value of playlistName.
 
     }
   }
