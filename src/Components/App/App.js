@@ -95,6 +95,22 @@ function App() {
 
   function search(term) {
     console.log(term);
+    
+    const searchEndpoint = 'https://api.spotify.com/v1/search';
+    const searchQuery = '?q='+term;
+    const searchType = '&type=track';
+
+    const authParams = {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer " + accessToken,
+      }
+    }
+
+    fetch(searchEndpoint + searchQuery + searchType, authParams)
+    .then(result => result.json())
+    .then(data => console.log(data.tracks.items))
+
   }
 
   return (
