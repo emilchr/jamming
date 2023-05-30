@@ -17,12 +17,18 @@ function App() {
   const [playlistName, setPlaylistName] = useState('Enter Playlist Name')
   const [playlistTracks, setPlaylistTracks] = useState([]) // Playlist ready to be synced
   const [accessToken, setAccessToken] = useState('') // Saves accessToken 
+  const [expiresIn, setExpiresIn] = useState('') // Saves expiresIn 
     
     // Get API Access Token and set it to the state "accessToken".
     useEffect(() => {
-       
-      Spotify(setAccessToken)
-
+      Spotify.authorize();
+      //Spotify.getToken(accessToken, setAccessToken, setExpiresIn)
+      setAccessToken(localStorage.getItem('token'))
+      setExpiresIn(localStorage.getItem('expire'))
+      // clean up url
+      setInterval(() => {
+        window.location.hash = ''
+      }, 100);
     }, [])
       
   const addTrack = useCallback(
@@ -53,20 +59,31 @@ function App() {
 
   }, [playlistName])
 
+  
   function savePlaylist() {
     
+    
+    
+    if (accessToken === null) {
+      console.log('There is no Access Token avalible.')
+    } 
+
     if (playlistTracks.length === 0){ // Does not update if there are no tracks added
 
       console.error('No tracks in the playlist')
 
     } else {
-
+      
         const trackURIs = playlistTracks.map(track => track.uri);
         const newPlaylistName = playlistName;
+        
+        Spotify.saveUserPlaylist(accessToken, playlistName, playlistTracks);
 
+        // Confirmation of successful add
         console.log(trackURIs);
         console.log('Playlist name: ' + newPlaylistName);
 
+        //  Resets playlist states
         setPlaylistTracks([]);
         updatePlaylistName('Enter Playlist Name') // resets the value of playlistName.
 
@@ -76,20 +93,7 @@ function App() {
   function search(term) {
     console.log(term);
     
-    const searchEndpoint = 'https://api.spotify.com/v1/search';
-    const searchQuery = '?q='+term;
-    const searchType = '&type=track';
-    
-    const authParams = {
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer " + accessToken,
-      }
-    }
-
-    fetch(searchEndpoint + searchQuery + searchType, authParams)
-    .then(result => result.json())
-    .then(data => setSearchResults(data.tracks.items))
+    Spotify.search(accessToken, setSearchResults, term)
     //console.log(searchResults)
   }
 
