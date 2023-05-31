@@ -8,7 +8,7 @@ const authEndpoint = 'https://accounts.spotify.com/authorize?'
 
 //const CLIENT_SECRET = '075399c949d94136bdf66582aafb1879';
 const REDIRECT_URI ='http://localhost:3000/';
-const SCOPES = ['playlist-read-private', 'playlist-modify-private', 'user-read-private' ]
+const SCOPES = ['playlist-read-private', 'playlist-modify-public', 'playlist-modify-private', 'user-read-private' ]
 
 let accessToken = '';
 let expiresIn = '';
@@ -82,13 +82,13 @@ saveUserPlaylist(accessToken, playlistName, playlistTracks) {
       "Authorization": "Bearer " + accessToken,
       "Content-Type": 'application/json'
     },
-    body: {
+    body: JSON.stringify({
       "name": playlistName
-    }
+    })
   }
   let playlistID = fetch(playlistEndpoint, playlistParams)
   .then(result => result.json())
-  .then(data => data.id)
+  .then(data => console.log(data.id))
 }
 }
 
