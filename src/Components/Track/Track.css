@@ -33,7 +33,7 @@
   
   .Track-information h3 {
     font-size: 1em;
-    width: 30em;
+    width: 55em;
     margin: .2rem 0 .3rem 0;
     padding-left: 0.2em;
     grid-area: 1 / 2 / 2 / 3;
@@ -41,12 +41,14 @@
   
   .Track-information p {
     margin: 0;
-    width: 30em;
+    height: 1.5em;
+    width: 55em;
     font-size: .83rem;
     font-weight: 300;
     color: rgba(256, 256, 256, 0.8);
     grid-area: 2 / 2 / 3 / 3;
     padding-left: 0.2em;
+    
   }
 
   img {

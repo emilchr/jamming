@@ -74,14 +74,14 @@ function App() {
 
     } else {
       
-        const trackURIs = playlistTracks.map(track => track.uri);
+        
         const newPlaylistName = playlistName;
         
         Spotify.saveUserPlaylist(accessToken, playlistName, playlistTracks);
 
         // Confirmation of successful add
-        console.log(trackURIs);
-        console.log('Playlist name: ' + newPlaylistName);
+        //console.log(trackURIs);
+        //console.log('Playlist name: ' + newPlaylistName);
 
         //  Resets playlist states
         setPlaylistTracks([]);

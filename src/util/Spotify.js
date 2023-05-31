@@ -57,7 +57,7 @@ search(accessToken, setSearchResults, term) {
   .then(data => setSearchResults(data.tracks.items))
 },
 
-saveUserPlaylist(accessToken, playlistName, playlistTracks) {
+async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
   let USER_ID = '';
   //console.log(accessToken)
   const userEndpoint = 'https://api.spotify.com/v1/me';
@@ -73,7 +73,7 @@ saveUserPlaylist(accessToken, playlistName, playlistTracks) {
     .then(data => localStorage.setItem('userID', data.id))
     USER_ID = localStorage.getItem('userID');
 
-    console.log(USER_ID)
+    //console.log(USER_ID)
     // create playlist
   const playlistEndpoint = 'https://api.spotify.com/v1/users/' + USER_ID + '/playlists';
   const playlistParams = {
@@ -86,9 +86,34 @@ saveUserPlaylist(accessToken, playlistName, playlistTracks) {
       "name": playlistName
     })
   }
-  let playlistID = fetch(playlistEndpoint, playlistParams)
+  // Fetches the playlistID and stores it in the variable playlistID.
+  let playlistID = await fetch(playlistEndpoint, playlistParams)
   .then(result => result.json())
-  .then(data => console.log(data.id))
+  .then(data => data.id)
+
+  
+  // Add tracks to the playlist
+  //
+  // Proccess playlistTracks to an array. The array is needed for the api request.
+  const trackURIs = playlistTracks.map(track => track.uri);
+  const tracksArray = Object.values(trackURIs);
+
+
+  const addTrackEndpoint = 'https://api.spotify.com/v1/playlists/' + playlistID + '/tracks';
+  const addTrackParams = {
+    method: 'POST',
+    headers: {
+      "Authorization": "Bearer " + accessToken,
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify({
+      "uris": tracksArray,
+    })
+  }
+  // connect to Spotify Web API and add tracks to playlistID
+  fetch(addTrackEndpoint, addTrackParams)
+  .then(result => result.json())
+  .then(data => console.log('Tracks were added to the playlist:' + data))
 }
 }
 
