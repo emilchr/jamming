@@ -1,6 +1,6 @@
 # Jammming
 
-This project is a web app connected to Spotify via the WebAPI. 
+This React project is a web app connected to Spotify via the Web API. 
 The main purpose of this web app is to search for tracks, add them to a playlist, then save the playlist to the users library.
 
 ## Features
@@ -30,41 +30,42 @@ Works with Playlist.js and SearchResults.js.
 ### App.js
 **addTrack()**
     
-e
+Adds track from SearchResults to Playlist.
 
 **removeTrack()**
     
-e
+Removes the track from Playlist
 
 **updatePlaylistName()**
     
-e
+Updates the playlistname.
 
 **savePlaylist()**
 
-e
+Gets the data from playlistTracks and playlistName. The playlist is created with the value of playlistName, and then the data from playlistTracks are added to the playlist.
+After the playlist has been added it resets the name and tracks. 
 
 **search()**
 
-e
+Makes a query to Spotify and displays the query in SearchResults.
 
 ### Track.js
 **renderAction()**
 
-e
+Renders a + or a - on the tracks. - renders if the prop isRemoval is true and + if isRemoval is false.
 
 ### Spotify.js
 **Spotify.authorize()**
 
-e
+Uses the Implicit Grant Flow to get an access token from the Spotify Web API.
 
 **Spotify.search()**
 
-e
+EXPLAIN THE FETCH REQUESTS
 
 **Spotify.saveUserPlaylist()**
 
-e
+EXPLAIN THE FETCH REQUESTS
 
 
 ## Testing
@@ -76,4 +77,4 @@ e
 ## Known bugs and fixes
 
 - [ ] Add a login screen 
-- [ ] Add transitions to TrackList.css.
+- [ ] Add transitions when adding a track to Playlist.css.
