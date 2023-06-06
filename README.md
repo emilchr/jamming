@@ -6,7 +6,8 @@ The main purpose of this web app is to search for tracks, add them to a playlist
 ## Technologies used
 - React
 - Mocha
-- Node.js
+- NPM
+- Git
 
 ## Features
 **Connects to the Spotify Web API**
