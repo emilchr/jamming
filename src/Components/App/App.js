@@ -62,8 +62,6 @@ function App() {
   
   function savePlaylist() {
     
-    
-    
     if (accessToken === null) {
       console.log('There is no Access Token avalible.')
     } 
@@ -73,9 +71,6 @@ function App() {
       console.error('No tracks in the playlist')
 
     } else {
-      
-        
-        const newPlaylistName = playlistName;
         
         Spotify.saveUserPlaylist(accessToken, playlistName, playlistTracks);
 
