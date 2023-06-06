@@ -6,7 +6,6 @@ import { CLIENT_ID } from "./Spotify_creds";
 
 const authEndpoint = 'https://accounts.spotify.com/authorize?'
 
-//const CLIENT_SECRET = '075399c949d94136bdf66582aafb1879';
 const REDIRECT_URI ='http://localhost:3000/';
 const SCOPES = ['playlist-read-private', 'playlist-modify-public', 'playlist-modify-private', 'user-read-private' ]
 

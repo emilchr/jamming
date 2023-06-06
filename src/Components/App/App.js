@@ -30,7 +30,7 @@ function App() {
       setInterval(() => {
         window.location.hash = ''
       }, 100);
-      
+
     }, [])
       
   const addTrack = useCallback(
@@ -79,7 +79,7 @@ function App() {
         Spotify.saveUserPlaylist(accessToken, playlistName, playlistTracks);
 
         //  Resets playlist states
-        setPlaylistTracks([]);
+        setPlaylistTracks([]); // resets tracks in playlistTracks.
         updatePlaylistName('Enter Playlist Name') // resets the value of playlistName.
 
         console.log('Playlist name is reset.');
