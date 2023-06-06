@@ -44,11 +44,11 @@ Removes the track from Playlist
 
 **updatePlaylistName()**
     
-Updates the playlistname.
+Updates the *playlistname*.
 
 **savePlaylist()**
 
-Gets the data from playlistTracks and playlistName. The playlist is created with the value of playlistName, and then the data from playlistTracks are added to the playlist.
+Gets the data from *playlistTracks* and *playlistName*. The playlist is created with the value of *playlistName*, and then the data from *playlistTracks* are added to the playlist.
 After the playlist has been added it resets the name and tracks. 
 
 **search()**
@@ -58,20 +58,21 @@ Makes a query to Spotify and displays the query in SearchResults.
 ### Track.js
 **renderAction()**
 
-Renders a + or a - on the tracks. - renders if the prop isRemoval is true and + if isRemoval is false.
+Renders a + or a - on the tracks. - renders if the prop *isRemoval* is true and + if *isRemoval* is false.
 
 ### Spotify.js
 **Spotify.authorize()**
 
-Uses the Implicit Grant Flow to get an access token from the Spotify Web API.
+Uses the Implicit Grant Flow to get an access token from the Spotify Web API. The data is stored in localStorage and then in, app.js, it gets stored in a state.
+If the token is not stored yet, it redirects to the *authEndpoint*. 
 
 **Spotify.search()**
 
-EXPLAIN THE FETCH REQUESTS
+Fetches data from Spotify Web API and stores it in *data.tracks.items*.
 
 **Spotify.saveUserPlaylist()**
 
-EXPLAIN THE FETCH REQUESTS
+Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, then creates a playlist with *playlistName* as name. It stores the ID of the playlist in *playlistID*. After the playlist is created, the function processes the *tracksURI* from a object to an array in *tracksArray* and adds all the tracks in *tracksArray* to the recently created playlist.
 
 
 ## Testing
@@ -82,9 +83,9 @@ EXPLAIN THE FETCH REQUESTS
   - Adding tracks and removing tracks from the playlist.
   - Adding and removing data to localStorage.
 
- 
 
 ## Known bugs and fixes
+- Not able to scroll down to view all the tracks in SearchResult and Playlist.
 
 ## Future features
 - [ ] Add a login screen 
