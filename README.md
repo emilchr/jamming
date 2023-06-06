@@ -3,6 +3,12 @@
 This React project is a web app connected to Spotify via the Web API. 
 The main purpose of this web app is to search for tracks, add them to a playlist, then save the playlist to the users library.
 
+## Technologies used
+- JavaScript
+- React
+- Mocha
+- Node.js
+
 ## Features
 **Connects to the Spotify Web API**
     
@@ -71,10 +77,16 @@ EXPLAIN THE FETCH REQUESTS
 ## Testing
 
 - Testing involves functions:
-  - Fetch requests in Spotify.js
-  - Login and authorization
+  - Login and authorization.
+  - Fetch requests in Spotify.js.
+  - Adding tracks and removing tracks from the playlist.
+  - Adding and removing data to localStorage.
+
+ 
 
 ## Known bugs and fixes
 
+## Future features
 - [ ] Add a login screen 
+- [ ] Add logging confirmation from functions and fetch requests in the console.
 - [ ] Add transitions when adding a track to Playlist.css.
