@@ -6,7 +6,8 @@ The main purpose of this web app is to search for tracks, add them to a playlist
 ## Features
 **Connects to the Spotify Web API**
     
-    Retrieves the access token via the Implicit Grant Flow. The access token is used by all the functions in Spotify.js.
+    Retrieves the access token via the Implicit Grant Flow. 
+    The access token is used by all the functions in Spotify.js.
 
 **Search**
 
@@ -22,7 +23,8 @@ The main purpose of this web app is to search for tracks, add them to a playlist
 
 **Album art**
 
-    Shows the album art of the chosen track. This is avalible in TrackList.js. Works with Playlist.js and SearchResults.js.
+    Shows the album art of the chosen track. This is avalible in TrackList.js. 
+    Works with Playlist.js and SearchResults.js.
 
 ## Functions
 ### App.js
