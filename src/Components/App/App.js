@@ -18,7 +18,8 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]) // Playlist ready to be synced
   const [accessToken, setAccessToken] = useState('') // Saves accessToken 
   const [expiresIn, setExpiresIn] = useState('') // Saves expiresIn 
-    
+  // end of states
+
     // Get API Access Token and set it to the state "accessToken".
     useEffect(() => {
       Spotify.authorize();
@@ -29,6 +30,7 @@ function App() {
       setInterval(() => {
         window.location.hash = ''
       }, 100);
+      
     }, [])
       
   const addTrack = useCallback(
@@ -37,6 +39,7 @@ function App() {
         return;
 
       setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+      console.log('Track added. Track: ' + track.artists[0].name +  ' - ' + track.name);
     },
     [playlistTracks]
   );
@@ -44,6 +47,7 @@ function App() {
   const removeTrack = useCallback(
     (track) => {   
       setPlaylistTracks(playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id));
+      console.log('Track removed. Track: ' + track.artists[0].name +  ' - ' + track.name);
       }, 
       [playlistTracks])
 
@@ -55,38 +59,35 @@ function App() {
  
   useEffect(() => { // resets playlistName in value on mounting.
 
-    document.getElementById('field').value = playlistName
-
+    document.getElementById('field').value = playlistName;
+    
   }, [playlistName])
 
   
   function savePlaylist() {
     
     if (accessToken === null) {
-      console.log('There is no Access Token avalible.')
+      console.error('There is no Access Token avalible.')
     } 
 
     if (playlistTracks.length === 0){ // Does not update if there are no tracks added
 
-      console.error('No tracks in the playlist')
+      console.error('No tracks in the playlist.')
 
     } else {
         
         Spotify.saveUserPlaylist(accessToken, playlistName, playlistTracks);
 
-        // Confirmation of successful add
-        //console.log(trackURIs);
-        //console.log('Playlist name: ' + newPlaylistName);
-
         //  Resets playlist states
         setPlaylistTracks([]);
         updatePlaylistName('Enter Playlist Name') // resets the value of playlistName.
 
+        console.log('Playlist name is reset.');
+        console.log('Tracks in playlist is reset.');
     }
   }
 
   function search(term) {
-    console.log(term);
     
     Spotify.search(accessToken, setSearchResults, term)
     //console.log(searchResults)

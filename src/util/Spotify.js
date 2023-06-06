@@ -68,12 +68,12 @@ async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
     }
   };
     // Fetch ID that will be required for creating a playlist
-    fetch(userEndpoint, userParams)
+    await fetch(userEndpoint, userParams)
     .then(result => result.json())
     .then(data => localStorage.setItem('userID', data.id))
     USER_ID = localStorage.getItem('userID');
 
-    //console.log(USER_ID)
+    console.log('UserID is retrieved. User: ' + USER_ID)
     // create playlist
   const playlistEndpoint = 'https://api.spotify.com/v1/users/' + USER_ID + '/playlists';
   const playlistParams = {
@@ -91,6 +91,7 @@ async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
   .then(result => result.json())
   .then(data => data.id)
 
+  console.log('Playlist is created with ID: ' + playlistID)
   
   // Add tracks to the playlist
   //
@@ -112,8 +113,8 @@ async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
   }
   // connect to Spotify Web API and add tracks to playlistID
   fetch(addTrackEndpoint, addTrackParams)
-  .then(result => result.json())
-  .then(data => console.log('Tracks were added to the playlist:' + data))
+  .then(console.log('Tracks were added to playlist: ' + playlistName))
+  
 }
 }
 

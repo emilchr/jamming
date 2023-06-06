@@ -86,8 +86,10 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 
 ## Known bugs and fixes
 - Not able to scroll down to view all the tracks in SearchResult and Playlist.
+- Search button is not working.
+- ~The first time clicking "Save to Spotify" fails. (Username was not retrieved. Added an asyncronous function.)~
 
 ## Future features
 - [ ] Add a login screen 
-- [ ] Add logging confirmation from functions and fetch requests in the console.
+- [ ] Add logging from functions and fetch requests in the console.
 - [ ] Add transitions when adding a track to Playlist.css.
