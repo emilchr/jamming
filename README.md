@@ -4,7 +4,6 @@ This React project is a web app connected to Spotify via the Web API.
 The main purpose of this web app is to search for tracks, add them to a playlist, then save the playlist to the users library.
 
 ## Technologies used
-- JavaScript
 - React
 - Mocha
 - Node.js
