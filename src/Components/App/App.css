@@ -1,12 +1,20 @@
-body,
-html,
-#root {
-  height: 100%;
-  
+body {
+  overflow-y: hidden;
+}
+
+#root{
+  display: block;
+  height: 100%; 
+  overflow-y: auto;
+  background-image: url('./background_photo_desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 html {
   font-size: 18px;
+  
 }
 
 h1 {
@@ -29,12 +37,9 @@ h2 {
 }
 
 .App {
-  height: 100%;
-  padding: 0 17% 10% 17%;
-  background-image: url('./background_photo_desktop.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 0 0 2em 0;
+
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   color: #fff;
@@ -43,12 +48,17 @@ h2 {
 .App-playlist {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  padding: 0 20% 0 20%;
+  margin-bottom: 5%;
+  
 }
+
 
 @media only screen and (max-width: 1020px) {
   .App-playlist {
     align-items: center;
     flex-direction: column;
+    padding: 0;
+    margin-bottom: 10%;
   }
 }

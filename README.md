@@ -85,7 +85,7 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 
 
 ## Known bugs and fixes
-- Not able to scroll down to view all the tracks in SearchResult and Playlist.
+- ~Not able to scroll down to view all the tracks in SearchResult and Playlist.(#root overrided body scroll. Disabled body scroll.)~
 - Search button is not working.
 - ~The first time clicking "Save to Spotify" fails. (Username was not retrieved. Added an asyncronous function.)~
 
