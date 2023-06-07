@@ -91,5 +91,5 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 
 ## Future features
 - [ ] Add a login screen 
-- [ ] Add logging from functions and fetch requests in the console.
-- [ ] Add transitions when adding a track to Playlist.css.
+- [ ] Add error/confirmation-logging from functions and fetch requests in the console.
+- [ ] Add transitions when adding a track to the Playlist.
