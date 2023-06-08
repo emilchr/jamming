@@ -24,7 +24,6 @@ const Spotify = {
     localStorage.setItem('token', accessToken)
     localStorage.setItem('expire', expiresIn)
     
-    //console.log(accessToken + ' ' + expiresIn)
 
     if (!localStorage.getItem('token')){
 
@@ -52,8 +51,15 @@ search(accessToken, setSearchResults, term) {
   }
 
   fetch(searchEndpoint + searchQuery + searchType, authParams)
-  .then(result => result.json())
+  .then(result => {
+    
+    if (!result.ok) {
+      throw new Error(result.statusText);
+    }
+    return result.json()
+  })
   .then(data => setSearchResults(data.tracks.items))
+  .catch(err => console.error('Unable to fetch query. ' + err))
 },
 
 async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
@@ -67,12 +73,24 @@ async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
     }
   };
     // Fetch ID that will be required for creating a playlist
+  
     await fetch(userEndpoint, userParams)
-    .then(result => result.json())
+    .then(result => {
+
+      if (!result.ok) {
+
+        throw new Error(result.statusText);
+
+      }
+
+      return result.json()
+
+    })
     .then(data => localStorage.setItem('userID', data.id))
+    .catch(err => console.error('Unable to fetch userID. ' + err))
+ 
     USER_ID = localStorage.getItem('userID');
 
-    console.log('UserID is retrieved. User: ' + USER_ID)
     // create playlist
   const playlistEndpoint = 'https://api.spotify.com/v1/users/' + USER_ID + '/playlists';
   const playlistParams = {
@@ -85,13 +103,28 @@ async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
       "name": playlistName
     })
   }
+
   // Fetches the playlistID and stores it in the variable playlistID.
   let playlistID = await fetch(playlistEndpoint, playlistParams)
-  .then(result => result.json())
-  .then(data => data.id)
+  .then(result => {
+    
+    if (!result.ok) {
 
-  console.log('Playlist is created with ID: ' + playlistID)
+      throw new Error(result.statusText);
+
+    }
+    return result.json()
+  })
+  .then(data => data.id)
+  .catch(err => console.error('Unable to fetch playlistID. ' + err))
   
+  // logging
+  if (playlistID) {
+
+    console.log('Playlist is created with ID: ' + playlistID)
+
+  } 
+
   // Add tracks to the playlist
   //
   // Proccess playlistTracks to an array. The array is needed for the api request.
@@ -110,10 +143,23 @@ async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
       "uris": tracksArray,
     })
   }
+
   // connect to Spotify Web API and add tracks to playlistID
   fetch(addTrackEndpoint, addTrackParams)
-  .then(console.log('Tracks were added to playlist: ' + playlistName))
-  
+  .then(result => {
+    
+    if (!result.ok) {
+
+      throw new Error(result.statusText);
+
+    } else {
+      
+      console.log('Tracks were added to playlist: ' + playlistName)
+      
+    }
+    return result.json()
+  })
+  .catch(err => console.error('Unable to add tracks to playlist. ' + err))
 }
 }
 

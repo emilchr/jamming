@@ -77,7 +77,7 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 
 ## Testing
 
-- Testing involves functions:
+- Testing has involved these functions:
   - Login and authorization.
   - Fetch requests in Spotify.js.
   - Adding tracks and removing tracks from the playlist.
@@ -90,6 +90,6 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 - ~The first time clicking "Save to Spotify" fails. (Username was not retrieved. Added an asyncronous function.)~
 
 ## Future features
-- [ ] Add a login screen 
-- [ ] Add error/confirmation-logging from functions and fetch requests in the console.
+- [ ] Add a login modal with the Spotify authorization site. 
+- [x] Add error/confirmation-logging from functions and fetch requests in the console.
 - [ ] Add transitions when adding a track to the Playlist.
