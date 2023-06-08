@@ -21,19 +21,19 @@ function App() {
   // end of states
 
     // Get API Access Token and set it to the state "accessToken".
-    // useEffect(() => {
+    useEffect(() => {
       
-    //   Spotify.authorize();
+      Spotify.authorize();
       
-    //   //Spotify.getToken(accessToken, setAccessToken, setExpiresIn)
-    //   setAccessToken(localStorage.getItem('token'))
-    //   setExpiresIn(localStorage.getItem('expire'))
-    //   // clean up url
-    //   setInterval(() => {
-    //     window.location.hash = ''
-    //   }, 100);
+      //Spotify.getToken(accessToken, setAccessToken, setExpiresIn)
+      setAccessToken(localStorage.getItem('token'))
+      setExpiresIn(localStorage.getItem('expire'))
+      // clean up url
+      setInterval(() => {
+        window.location.hash = ''
+      }, 100);
 
-    // }, [])
+    }, [])
       
   const addTrack = useCallback(
     (track) => {
