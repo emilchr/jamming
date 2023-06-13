@@ -120,8 +120,6 @@ function App() {
     </div>
   )
 }
-const add = (a,b) => {
-  return a+b
-}
+
+
 export default App
-export { add }
