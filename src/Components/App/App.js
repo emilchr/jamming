@@ -66,7 +66,7 @@ function App() {
   }, [playlistName])
 
   
-  function savePlaylist() {
+  const savePlaylist = () => {
     
     if (accessToken === null) {
       console.error('There is no Access Token avalible.')
@@ -89,11 +89,12 @@ function App() {
     }
   }
 
-  function search(term) {
+   const search = (term) => {
     
     Spotify.search(accessToken, setSearchResults, term)
     //console.log(searchResults)
   }
+  
 
   return (
     <div> 
@@ -119,5 +120,8 @@ function App() {
     </div>
   )
 }
-
+const add = (a,b) => {
+  return a+b
+}
 export default App
+export { add }
