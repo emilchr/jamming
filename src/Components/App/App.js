@@ -20,7 +20,7 @@ function App() {
   const [expiresIn, setExpiresIn] = useState('') // Saves expiresIn 
   // end of states
 
-    // Get API Access Token and set it to the state "accessToken".
+    // Get API Access Token and set it to the state "accessToken". 
     useEffect(() => {
       
       Spotify.authorize();
