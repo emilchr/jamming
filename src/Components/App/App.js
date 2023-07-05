@@ -5,6 +5,7 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import Profile from '../Profile/Profile';
 
 import Spotify from '../../util/Spotify';
 
@@ -13,11 +14,13 @@ import Spotify from '../../util/Spotify';
 function App() {
   
   // States
-  const [searchResults, setSearchResults] = useState([])
-  const [playlistName, setPlaylistName] = useState('Enter Playlist Name')
-  const [playlistTracks, setPlaylistTracks] = useState([]) // Playlist ready to be synced
-  const [accessToken, setAccessToken] = useState('') // Saves accessToken 
-  const [expiresIn, setExpiresIn] = useState('') // Saves expiresIn 
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState('Enter Playlist Name');
+  const [playlistTracks, setPlaylistTracks] = useState([]); // Playlist ready to be synced
+  const [accessToken, setAccessToken] = useState(''); // Saves accessToken 
+  const [expiresIn, setExpiresIn] = useState(''); // Saves expiresIn 
+  const [userName, setUserName] = useState('');
+  const [userImage, setUserImage] = useState('');
   // end of states
 
     // Get API Access Token and set it to the state "accessToken". 
@@ -28,11 +31,16 @@ function App() {
       //Spotify.getToken(accessToken, setAccessToken, setExpiresIn)
       setAccessToken(localStorage.getItem('token'))
       setExpiresIn(localStorage.getItem('expire'))
+      Spotify.getProfileInfo()
+      
+      setUserName(localStorage.getItem('userName'))
+      setUserImage(localStorage.getItem('userImage'))
+      
       // clean up url
       setInterval(() => {
         window.location.hash = ''
       }, 100);
-
+      
     }, [])
       
   const addTrack = useCallback(
@@ -90,16 +98,19 @@ function App() {
   }
 
    const search = (term) => {
-    
     Spotify.search(accessToken, setSearchResults, term)
     //console.log(searchResults)
-  }
-  
+  } 
 
   return (
     <div> 
       <div className="App">
-      <h1>Ja<span className="highlight">mmm</span>ing</h1>
+      <div className='header'>
+        <h1>Ja<span className="highlight">mmm</span>ing </h1>
+        <div className='right'>
+          <Profile userName={userName} userImage={userImage} />
+          </div>
+      </div>
          <SearchBar onSearch={search} />
         <div className="App-playlist">
           

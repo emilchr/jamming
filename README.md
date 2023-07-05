@@ -93,4 +93,5 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 - [ ] Add a login modal with the Spotify authorization site. 
 - [x] Add error/confirmation-logging from functions and fetch requests in the console.
 - [ ] Add transitions when adding a track to the Playlist.
+- [x] Add support for profile name and profile image to improve UX.
 - [ ] Add audio preview on tracks. (working on it)

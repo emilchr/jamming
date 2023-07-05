@@ -62,6 +62,37 @@ search(accessToken, setSearchResults, term) {
   .catch(err => console.error('Unable to fetch query. ' + err))
 },
 
+async getProfileInfo () {
+
+  //console.log(accessToken)
+  const userEndpoint = 'https://api.spotify.com/v1/me';
+  const userParams = {
+    method: 'GET',
+    headers: {
+      "Authorization": "Bearer " + accessToken
+    }
+  };
+    // Fetch ID that will be required for creating a playlist
+  
+    await fetch(userEndpoint, userParams)
+    .then(result => {
+
+      if (!result.ok) {
+
+        throw new Error(result.statusText);
+
+      }
+
+      return result.json()
+
+    })
+    .then(data => {
+      localStorage.setItem('userName', data.display_name)
+      localStorage.setItem('userImage', data.images[1].url)
+    })
+    .catch(err => console.error('Unable to fetch user data. ' + err))
+},
+
 async saveUserPlaylist(accessToken, playlistName, playlistTracks) {
   let USER_ID = '';
   //console.log(accessToken)
