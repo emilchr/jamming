@@ -1,0 +1,14 @@
+.profile-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.profile-name {
+    color: #fe177b;
+    font-size: 0.75em;
+}
+
+.profile-image img {
+    padding: 0.25em;
+    border-radius: 50%;
+}
