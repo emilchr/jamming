@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Track.css';
 
 
@@ -25,13 +25,21 @@ function Track(props) {
    }
   }
 
-  const isPlaying = () => {
-
-  }
+  useEffect(()=> {
+    if (document.getElementById('audio-player').ended){
+      setPlaying(false)
+    }
+  }, [document.getElementById('audio-player')])
+    
+  
 
   const previewCheck = (e) => {
     if (props.track.preview_url === null) {
-      return (<button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}> </button>)
+      return (
+      
+      <button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}> </button>
+      
+      )
     } else {
       return (
       <div>
@@ -40,7 +48,7 @@ function Track(props) {
           No support
         </audio>
         <button id="play-button" onClick={ function(){
-
+          
           if (document.getElementById('audio-player').paused) {
             
             document.getElementById('audio-player').play()
