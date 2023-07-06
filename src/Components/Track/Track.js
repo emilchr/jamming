@@ -24,9 +24,9 @@ function Track(props) {
 
   const previewCheck = () => {
     if (props.track.preview_url === null) {
-      return null
+      return <button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}>▶</button>
     } else {
-      return <a href={props.track.preview_url}>▶</a>
+      return <a href={props.track.preview_url} target='_blank' rel="noreferrer">▶</a>
     }
   }
  
