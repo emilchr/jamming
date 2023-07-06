@@ -14,7 +14,9 @@ function TrackList(props) {
         track={track}
         onAdd={props.onAdd}  
         isRemoval={props.isRemoval}
-        onRemove={props.onRemove}                
+        onRemove={props.onRemove}
+        togglePlaying={props.togglePlaying}
+        playing={props.playing}               
       />
       )
     }

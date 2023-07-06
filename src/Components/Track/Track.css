@@ -98,7 +98,7 @@
 
   .Track-information .image-container button:hover {
     background-color: #be3d75;
-    opacity: 0.5;
+    opacity: 0.8;
     border-radius: 50%;
     transition: all 0.2s ease-in;
   }
