@@ -26,7 +26,7 @@ function App() {
     // Get API Access Token and set it to the state "accessToken". 
     useEffect(() => {
       
-      //Spotify.authorize();
+      Spotify.authorize();
       
       //Spotify.getToken(accessToken, setAccessToken, setExpiresIn)
       setAccessToken(localStorage.getItem('token'))
@@ -112,6 +112,7 @@ function App() {
           </div>
       </div>
          <SearchBar onSearch={search} />
+         
         <div className="App-playlist">
           
           <SearchResults 

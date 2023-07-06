@@ -21,12 +21,20 @@ function Track(props) {
      
    }
   }
+
+  const previewCheck = () => {
+    if (props.track.preview_url === null) {
+      return null
+    } else {
+      return <a href={props.track.preview_url}>▶</a>
+    }
+  }
  
   return (
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
-            <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
+          <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>{previewCheck()}
           </div>
             <h3>{props.track.name}</h3>
             <p>{props.track.artists[0].name} | {props.track.album.name}</p>
