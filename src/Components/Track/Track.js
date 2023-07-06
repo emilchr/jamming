@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Track.css';
 
 
 function Track(props) {
+
+  const [playing, setPlaying] = useState(false);
+
+
   function addTrack() {
     props.onAdd(props.track);
   }
@@ -24,9 +28,31 @@ function Track(props) {
 
   const previewCheck = () => {
     if (props.track.preview_url === null) {
-      return <button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}>▶</button>
+      return <button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}>X</button>
     } else {
-      return <a href={props.track.preview_url} target='_blank' rel="noreferrer">▶</a>
+      return (
+      <div>
+        <audio id="audio-player">
+          <source src={props.track.preview_url} type="audio/mpeg"></source>
+          No support
+        </audio>
+        <button id="play-button" onClick={ function(){
+
+          if (document.getElementById('audio-player').paused) {
+            
+            document.getElementById('audio-player').play()
+            
+            setPlaying(true);
+           } else { 
+            
+            document.getElementById('audio-player').pause()
+            
+            setPlaying(false);
+          }
+          
+          } }>{playing ? "||" : "▶"}</button>
+      </div>
+      )
     }
   }
  
