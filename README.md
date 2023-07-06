@@ -5,7 +5,9 @@ The main purpose of this web app is to search for tracks, add them to a playlist
 
 ## Technologies used
 - React
-- Mocha
+- HTML
+- CSS
+- Javascript
 - NPM
 - Git
 
