@@ -22,7 +22,7 @@ function App() {
   const [userName, setUserName] = useState('');
   const [userImage, setUserImage] = useState('');
   // end of states
-  const [playing, setPlaying] = useState(false);
+  
     // Get API Access Token and set it to the state "accessToken". 
     useEffect(() => {
       
@@ -67,9 +67,6 @@ function App() {
 
   }
  
-  const togglePlaying = (playing) => {
-    setPlaying(playing)
-  }
   useEffect(() => { // resets playlistName in value on mounting.
 
     document.getElementById('field').value = playlistName;
@@ -119,15 +116,11 @@ function App() {
         <div className="App-playlist">
           
           <SearchResults 
-            togglePlaying={togglePlaying}
-            playing={playing}
             searchResults={searchResults} 
             onAdd={addTrack} 
           />
 
-          <Playlist 
-            togglePlaying={togglePlaying}
-            playing={playing}
+          <Playlist             
             playlistName={playlistName} 
             playlistTracks={playlistTracks} 
             onRemove={removeTrack} 

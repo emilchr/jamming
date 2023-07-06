@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Track.css';
 
 
 function Track(props) {
+
+  const [playing, setPlaying] = useState(false);
 
   function addTrack() {
     props.onAdd(props.track);
@@ -23,14 +25,18 @@ function Track(props) {
    }
   }
 
-  const previewCheck = () => {
+  const isPlaying = () => {
+
+  }
+
+  const previewCheck = (e) => {
     if (props.track.preview_url === null) {
-      return <button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}> </button>
+      return (<button onClick={function(){console.log("No preview avalible")}} style={{cursor: 'default'}}> </button>)
     } else {
       return (
       <div>
-        <audio id="audio-player">
-          <source src={props.track.preview_url} type="audio/mpeg"></source>
+        <audio id="audio-player" key={props.track.preview_url}>
+          <source key={props.track.preview_url} src={props.track.preview_url} type="audio/mpeg"></source>
           No support
         </audio>
         <button id="play-button" onClick={ function(){
@@ -39,15 +45,15 @@ function Track(props) {
             
             document.getElementById('audio-player').play()
             
-            props.togglePlaying(true);
+            setPlaying(true);
            } else { 
             
             document.getElementById('audio-player').pause()
             
-            props.togglePlaying(false);
+            setPlaying(false);
           }
           
-          } }>{props.playing ? "||" : "▶"}</button>
+          } }>{playing && props.track.preview_url ? "||" : "▶"}</button>
       </div>
       )
     }
@@ -57,7 +63,10 @@ function Track(props) {
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
-          <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>{previewCheck()}
+          <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
+          
+          {previewCheck()}
+          
           </div>
             <h3>{props.track.name}</h3>
             <p>{props.track.artists[0].name} | {props.track.album.name}</p>
