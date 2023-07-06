@@ -33,7 +33,9 @@ function Track(props) {
     
   
 
-  const previewCheck = (e) => {
+  const previewCheck = () => {
+    
+
     if (props.track.preview_url === null) {
       return (
       
@@ -54,6 +56,7 @@ function Track(props) {
             document.getElementById('audio-player').play()
             
             setPlaying(true);
+            document.getElementById('audio-player').addEventListener('ended', ()=> setPlaying(false))
            } else { 
             
             document.getElementById('audio-player').pause()
@@ -61,7 +64,10 @@ function Track(props) {
             setPlaying(false);
           }
           
-          } }>{playing && props.track.preview_url ? "||" : "▶"}</button>
+          } }
+          >
+            {playing && props.track.preview_url ? "||" : "▶"}
+            </button>
       </div>
       )
     }
