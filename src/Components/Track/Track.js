@@ -46,7 +46,7 @@ function Track(props) {
             document.getElementById('audioPlayer').play()
             
             setPlaying(true); // sets the state setPlaying to true. This affects the play/pause button
-            document.getElementById('audioPlayer').addEventListener('ended', ()=> setPlaying(false)) // listening for track to stop playing 
+            document.getElementById('audioPlayer').addEventListener('ended', () => setPlaying(false)) // listening for track to stop playing 
             console.log(props.track.preview_url)
            } else { 
             
@@ -63,14 +63,19 @@ function Track(props) {
       )
     }
   }
-  let audioPlayer = new Audio(props.track.preview_url)
-    audioPlayer.id = "audioPlayer"
+
+
+  let audioPlayer = new Audio(props.track.preview_url) // creates a new <audio> with unique url
+    audioPlayer.id = "audioPlayer"; // sets the id to "audioPlayer"
+    // audioPlayer is an object. It needs to become a string in JSX
+    //console.log(audioPlayer)
+    
   return (
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
           <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
-          {props.track.preview_url === null ? "": audioPlayer}
+          {props.track.preview_url === null ? "": console.log(audioPlayer)}  
           {/* <audio id="audio-player">
           {
           props.track.preview_url === null ? 
