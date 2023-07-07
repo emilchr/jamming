@@ -12,14 +12,16 @@ function TrackList(props) {
       <Track 
         key={track.id} 
         track={track}
+        //preview_url={track.preview_url}
         onAdd={props.onAdd}  
         isRemoval={props.isRemoval}
         onRemove={props.onRemove}
         togglePlaying={props.togglePlaying}
         playing={props.playing}               
-      />
-      )
-    }
+        />
+        )
+      }
+      
   </div>
   )
 }

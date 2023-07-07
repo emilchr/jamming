@@ -39,23 +39,20 @@ function Track(props) {
     } else {
       return (
       <div>
-        {/* <audio id="audio-player" key={props.track.preview_url}>
-          <source key={props.track.preview_url} src={props.track.preview_url} type="audio/mpeg"></source>
-          No support
-        </audio> */}
         <button id="play-button" onClick={ function(){
           
-          if (document.getElementById('audio-player').paused) {
+          if (document.getElementById('audioPlayer').paused) {
             
-            document.getElementById('audio-player').play()
+            document.getElementById('audioPlayer').play()
             
-            setPlaying(true);
-            document.getElementById('audio-player').addEventListener('ended', ()=> setPlaying(false))
+            setPlaying(true); // sets the state setPlaying to true. This affects the play/pause button
+            document.getElementById('audioPlayer').addEventListener('ended', ()=> setPlaying(false)) // listening for track to stop playing 
+            console.log(props.track.preview_url)
            } else { 
             
-            document.getElementById('audio-player').pause()
+            document.getElementById('audioPlayer').pause()
             
-            setPlaying(false);
+            setPlaying(false);// sets the state setPlaying to false. This affects the play/pause button
           }
           
           } }
@@ -66,16 +63,23 @@ function Track(props) {
       )
     }
   }
-
+  let audioPlayer = new Audio(props.track.preview_url)
+    audioPlayer.id = "audioPlayer"
   return (
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
           <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
-          <audio id="audio-player" key={props.track.preview_url}>
-          <source key={props.track.preview_url} src={props.track.preview_url} type="audio/mpeg"></source>
+          {props.track.preview_url === null ? "": audioPlayer}
+          {/* <audio id="audio-player">
+          {
+          props.track.preview_url === null ? 
+          "" : 
+          <source src={props.track.preview_url} type="audio/mpeg"></source>
+          }
           No support
-          </audio>
+          </audio> */}
+      
           {audioPreviewButton()}
           
           </div>

@@ -13,6 +13,9 @@ function SearchResults(props) {
           onAdd={props.onAdd} 
           isRemoval={false} 
         />
+        {
+        //console.log(props.searchResults) Delivers correct preview_url from object
+        }
     </div>
   )
 }
