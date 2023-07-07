@@ -25,15 +25,9 @@ function Track(props) {
    }
   }
 
-  useEffect(()=> {
-    if (document.getElementById('audio-player').ended){
-      setPlaying(false)
-    }
-  }, [document.getElementById('audio-player')])
-    
   
 
-  const previewCheck = () => {
+  const audioPreviewButton = () => {
     
 
     if (props.track.preview_url === null) {
@@ -45,10 +39,10 @@ function Track(props) {
     } else {
       return (
       <div>
-        <audio id="audio-player" key={props.track.preview_url}>
+        {/* <audio id="audio-player" key={props.track.preview_url}>
           <source key={props.track.preview_url} src={props.track.preview_url} type="audio/mpeg"></source>
           No support
-        </audio>
+        </audio> */}
         <button id="play-button" onClick={ function(){
           
           if (document.getElementById('audio-player').paused) {
@@ -72,14 +66,17 @@ function Track(props) {
       )
     }
   }
- 
+
   return (
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
           <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
-          
-          {previewCheck()}
+          <audio id="audio-player" key={props.track.preview_url}>
+          <source key={props.track.preview_url} src={props.track.preview_url} type="audio/mpeg"></source>
+          No support
+          </audio>
+          {audioPreviewButton()}
           
           </div>
             <h3>{props.track.name}</h3>
