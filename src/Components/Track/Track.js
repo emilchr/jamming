@@ -65,17 +65,18 @@ function Track(props) {
   }
 
 
-  let audioPlayer = new Audio(props.track.preview_url) // creates a new <audio> with unique url
-    audioPlayer.id = "audioPlayer"; // sets the id to "audioPlayer"
+  let audioPlayer = new Audio(props.track.preview_url, 1) // creates a new <audio> with unique url
+    audioPlayer.id = "audioPlayer"; // sets the id to "audioPlayer"  ??? Does it work if all the audio tags has the same id?
     // audioPlayer is an object. It needs to become a string in JSX
     //console.log(audioPlayer)
     
+
   return (
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
           <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
-          {props.track.preview_url === null ? "": console.log(audioPlayer)}  
+          {props.track.preview_url === null ? "": console.log(audioPlayer.outerHTML)}  
           {/* <audio id="audio-player">
           {
           props.track.preview_url === null ? 
