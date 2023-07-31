@@ -102,4 +102,4 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 - [x] Add error/confirmation-logging from functions and fetch requests in the console.
 - [ ] Add transitions when adding a track to the Playlist.
 - [x] Add support for profile name and profile image to improve UX.
-- [x] Add audio preview on tracks. (Working-ish, only the first song plays)
+- [x] Add audio preview on tracks.
