@@ -34,6 +34,10 @@ Connects to Spotify, creates a playlist with the chosen name and adds the tracks
 Shows the album art of the chosen track. This is avalible in TrackList.js. 
 Works with Playlist.js and SearchResults.js.
 
+**Audio preview**
+
+An audio preview is avalible for the songs that has a preview url. 
+
 ## Functions
 ### App.js
 **addTrack()**
@@ -88,8 +92,10 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 
 ## Known bugs and fixes
 - ~Not able to scroll down to view all the tracks in SearchResult and Playlist.(#root overrided body scroll. Disabled body scroll.)~
-- Search button is not working.
 - ~The first time clicking "Save to Spotify" fails. (Username was not retrieved. Added an asyncronous function.)~
+- Search button is not working.
+- Preview keeps playing after another preview has been started.
+- User icon not loading on first redirect from Spotify Authorization.
 
 ## Future features
 - [ ] Add a login modal with the Spotify authorization site. 
