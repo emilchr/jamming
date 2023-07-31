@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Track.css';
 
 
@@ -69,16 +69,16 @@ function Track(props) {
           <div className="Track-information">
           <div className='image-container'>
           <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
-          {/* {props.track.preview_url === null ? "": console.log(audioPlayer)}   */}
           {
-          <audio id={props.track.preview_url}>
-          {
-          props.track.preview_url === null ? 
-          "" : 
-          <source src={props.track.preview_url} type="audio/mpeg"></source>
+            <audio id={props.track.preview_url}>
+              {
+                props.track.preview_url === null ? 
+                "" : 
+                <source src={props.track.preview_url} type="audio/mpeg"></source>
+              }
+            No support
+            </audio> 
           }
-          No support
-          </audio> }
       
           {audioPreviewButton()}
           
