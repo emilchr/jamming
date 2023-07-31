@@ -39,6 +39,7 @@ h2 {
 
 .App {
   height: 100vh;
+  height: --webkit-fill-available;
   padding: 0 0 2em 0;
 
   font-family: 'Work Sans', sans-serif;
@@ -89,5 +90,8 @@ h2 {
     min-width: 10em;
     background-color: #000a2e;
     border-radius: 2em;
+  }
+  .App {
+    margin-bottom: 1em;
   }
 }
