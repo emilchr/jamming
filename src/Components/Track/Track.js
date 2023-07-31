@@ -41,16 +41,16 @@ function Track(props) {
       <div>
         <button id="play-button" onClick={ function(){
           
-          if (document.getElementById('audioPlayer').paused) {
+          if (document.getElementById(props.track.preview_url).paused) {
             
-            document.getElementById('audioPlayer').play()
+            document.getElementById(props.track.preview_url).play()
             
             setPlaying(true); // sets the state setPlaying to true. This affects the play/pause button
-            document.getElementById('audioPlayer').addEventListener('ended', () => setPlaying(false)) // listening for track to stop playing 
+            document.getElementById(props.track.preview_url).addEventListener('ended', () => setPlaying(false)) // listening for track to stop playing 
             console.log(props.track.preview_url)
            } else { 
             
-            document.getElementById('audioPlayer').pause()
+            document.getElementById(props.track.preview_url).pause()
             
             setPlaying(false);// sets the state setPlaying to false. This affects the play/pause button
           }
@@ -62,29 +62,23 @@ function Track(props) {
       </div>
       )
     }
-  }
-
-
-  let audioPlayer = new Audio(props.track.preview_url, 1) // creates a new <audio> with unique url
-    audioPlayer.id = "audioPlayer"; // sets the id to "audioPlayer"  ??? Does it work if all the audio tags has the same id?
-    // audioPlayer is an object. It needs to become a string in JSX
-    //console.log(audioPlayer)
+  }    
     
-
   return (
     <div className="Track">
           <div className="Track-information">
           <div className='image-container'>
           <img src={props.track.album.images[0].url} alt={props.track.album.name}></img>
-          {props.track.preview_url === null ? "": console.log(audioPlayer.outerHTML)}  
-          {/* <audio id="audio-player">
+          {/* {props.track.preview_url === null ? "": console.log(audioPlayer)}   */}
+          {
+          <audio id={props.track.preview_url}>
           {
           props.track.preview_url === null ? 
           "" : 
           <source src={props.track.preview_url} type="audio/mpeg"></source>
           }
           No support
-          </audio> */}
+          </audio> }
       
           {audioPreviewButton()}
           
