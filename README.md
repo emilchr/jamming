@@ -36,7 +36,7 @@ Works with Playlist.js and SearchResults.js.
 
 **Audio preview**
 
-An audio preview is avalible for the songs that has a preview url. 
+An audio preview is available for the songs that has a preview url. 
 
 ## Functions
 ### App.js

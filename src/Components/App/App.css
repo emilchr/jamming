@@ -1,5 +1,6 @@
 body {
   overflow-y: hidden;
+  height: --webkit-fill-available;
 }
 
 #root{
@@ -14,6 +15,7 @@ body {
 
 html {
   font-size: 18px;
+  height: --webkit-fill-available;
   
 }
 
