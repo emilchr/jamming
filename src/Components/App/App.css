@@ -94,4 +94,7 @@ h2 {
   .App {
     margin-bottom: 1em;
   }
+  .SearchResults{
+    height: auto;
+  }
 }
