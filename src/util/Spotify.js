@@ -6,7 +6,7 @@ import { CLIENT_ID } from "./Spotify_creds";
 
 const authEndpoint = 'https://accounts.spotify.com/authorize?'
 
-const REDIRECT_URI ='https://jammming-emilchr.netlify.app/g';
+const REDIRECT_URI ='https://jammming-emilchr.netlify.app/';
 const SCOPES = ['playlist-read-private', 'playlist-modify-public', 'playlist-modify-private', 'user-read-private' ]
 
 let accessToken = '';
