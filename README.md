@@ -94,6 +94,7 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 - ~Not able to scroll down to view all the tracks in SearchResult and Playlist.(#root overrided body scroll. Disabled body scroll.)~
 - ~The first time clicking "Save to Spotify" fails. (Username was not retrieved. Added an asyncronous function.)~
 - ~User icon not loading on first redirect from Spotify Authorization.~
+- ~Save button issues on mobile devices. Not visible if you scroll to the bottom~
 - Search button is not working.
 - Preview keeps playing after another preview has been started.
 
@@ -104,3 +105,4 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 - [ ] Add transitions when adding a track to the Playlist.
 - [x] Add support for profile name and profile image to improve UX.
 - [x] Add audio preview on tracks.
+- [ ] Add save confirmation.
