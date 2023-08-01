@@ -23,18 +23,15 @@ function App() {
   const [userImage, setUserImage] = useState('');
   // end of states
   
-    // Get API Access Token and set it to the state "accessToken". 
+  
+    
     useEffect(() => {
       
-      Spotify.authorize();
+      // Get API Access Token and set it to the state "accessToken". 
+      Spotify.authorize(setAccessToken, setExpiresIn);
       
-      //Spotify.getToken(accessToken, setAccessToken, setExpiresIn)
-      setAccessToken(localStorage.getItem('token'))
-      setExpiresIn(localStorage.getItem('expire'))
-      Spotify.getProfileInfo()
-      
-      setUserName(localStorage.getItem('userName'))
-      setUserImage(localStorage.getItem('userImage'))
+
+      Spotify.getProfileInfo(setUserName, setUserImage)  // Sets states with user info directly and sets the info in localStorage
       
       // clean up url
       setInterval(() => {

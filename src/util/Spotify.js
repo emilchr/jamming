@@ -7,6 +7,7 @@ import { CLIENT_ID } from "./Spotify_creds";
 const authEndpoint = 'https://accounts.spotify.com/authorize?'
 
 const REDIRECT_URI ='https://jammming-emilchr.netlify.app/';
+//const REDIRECT_URI ='http://localhost:3000/';
 const SCOPES = ['playlist-read-private', 'playlist-modify-public', 'playlist-modify-private', 'user-read-private' ]
 
 let accessToken = '';
@@ -14,7 +15,7 @@ let expiresIn = '';
 
 const Spotify = {
 
-  authorize() {
+  authorize(setAccessToken, setExpiresIn) {
     const authRedirect = authEndpoint + 'client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&scope=' + SCOPES.join('%20') + '&response_type=token&show_dialog=true';
     
     let params = new URLSearchParams(window.location.hash)
@@ -29,10 +30,10 @@ const Spotify = {
 
       window.location.href = authRedirect;
 
-    } else{
-
-      accessToken = localStorage.getItem('token');
-      expiresIn = localStorage.getItem('expire')
+    } else {
+      // Sets states for accessToken and expiresIn
+      setAccessToken(localStorage.getItem('token')) 
+      setExpiresIn(localStorage.getItem('expire'))
     }
     
   },
@@ -62,7 +63,7 @@ search(accessToken, setSearchResults, term) {
   .catch(err => console.error('Unable to fetch query. ' + err))
 },
 
-async getProfileInfo () {
+async getProfileInfo (setUserName, setUserImage) {
 
   //console.log(accessToken)
   const userEndpoint = 'https://api.spotify.com/v1/me';
@@ -87,8 +88,10 @@ async getProfileInfo () {
 
     })
     .then(data => {
-      localStorage.setItem('userName', data.display_name)
-      localStorage.setItem('userImage', data.images[1].url)
+      setUserName(data.display_name); // Sets state with username  directly
+      setUserImage(data.images[1].url); // Sets state with user image directly
+      // localStorage.setItem('userName', data.display_name)
+      // localStorage.setItem('userImage', data.images[1].url)
     })
     .catch(err => console.error('Unable to fetch user data. ' + err))
 },

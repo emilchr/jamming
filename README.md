@@ -93,9 +93,10 @@ Fetches data from the *userEndpoint*, uses it to determine userID in Spotify, th
 ## Known bugs and fixes
 - ~Not able to scroll down to view all the tracks in SearchResult and Playlist.(#root overrided body scroll. Disabled body scroll.)~
 - ~The first time clicking "Save to Spotify" fails. (Username was not retrieved. Added an asyncronous function.)~
+- ~User icon not loading on first redirect from Spotify Authorization.~
 - Search button is not working.
 - Preview keeps playing after another preview has been started.
-- User icon not loading on first redirect from Spotify Authorization.
+
 
 ## Future features
 - [ ] Add a login modal with the Spotify authorization site. 
