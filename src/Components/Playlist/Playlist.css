@@ -53,5 +53,6 @@
       width: 90%;
       margin-left: 0;
       margin-bottom: 1em;
+      min-height: 300px;
     }
   }
