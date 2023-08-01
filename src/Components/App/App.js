@@ -27,17 +27,27 @@ function App() {
     
     useEffect(() => {
       
-      // Get API Access Token and set it to the state "accessToken". 
-      Spotify.authorize(setAccessToken, setExpiresIn);
-      
+      // Checks if API Access Token is provided. If not it hits Spotify with a authorization request.
+      if (!localStorage.getItem('token')) {
+        
+        // Get API Access Token and set it to the state "accessToken". Sets it in localStorage aswell
+        Spotify.authorize(setAccessToken, setExpiresIn);
+        
+        // cleans up url
+        setInterval(() => {  
+          window.location.hash = ''
+        }, 100);
 
-      Spotify.getProfileInfo(setUserName, setUserImage)  // Sets states with user info directly and sets the info in localStorage
+      } else {
+
+        // If token was already provided, states are updated with data from localStorage.
+        setAccessToken(localStorage.getItem('token')) 
+        setExpiresIn(localStorage.getItem('expire'))
       
-      // clean up url
-      setInterval(() => {
-        window.location.hash = ''
-      }, 100);
+      }
       
+      Spotify.getProfileInfo(setUserName, setUserImage)  // Sets states with user info directly 
+
     }, [])
       
   const addTrack = useCallback(

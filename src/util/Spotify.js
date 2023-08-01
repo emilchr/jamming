@@ -64,7 +64,7 @@ search(accessToken, setSearchResults, term) {
 },
 
 async getProfileInfo (setUserName, setUserImage) {
-
+  accessToken = localStorage.getItem('token'); // Gets the token and sets it to the variable, in case of a refresh.
   //console.log(accessToken)
   const userEndpoint = 'https://api.spotify.com/v1/me';
   const userParams = {
